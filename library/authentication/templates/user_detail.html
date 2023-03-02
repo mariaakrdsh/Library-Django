@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <style>
+        table {
+          display: inline-table;
+          border: 1px solid black;
+          margin-left: 25px;
+
+        }
+        td, th {
+          border: 1px solid black;
+          padding: 8px;
+          
+        }
+        caption {
+          font-weight: bold;
+          padding: 12px;
+          font-size: 22;
+          font-style: italic;
+        }
+        h2, h3 {
+            text-align: center;
+        }
+        button {
+          /* margin-left: 8px; */
+          width: 120px;
+          height: 50px;
+          margin-left: 30px;
+        }
+        
+      </style>
+  </head>
+  <body>
+
+
+<table>
+    <caption>{{ customer.first_name }} {{ customer.last_name }}</br>{{ customer.email }}</caption>
+    <tr>
+        <th>Order id</th>
+        <th>Book</th>
+        <th>Date</th>
+    <tbody>
+        {% for order in orders %}
+    </tr>  
+    <td>{{order.id}}</a></td>
+    <td>{{order.book.name}}</td>
+    <td>{{order.created_at}}</td>
+    </tr>
+        {% endfor %}
+    </table>
+
+
+</body>
+</br></br>
+
+</a>
+<a href="{% url 'all_books' %}">
+<button>Back</button>
+</a>

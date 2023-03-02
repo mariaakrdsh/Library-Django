@@ -1,0 +1,89 @@
+<html>
+  <head>
+    <style>
+      table {
+        display: inline-table;
+        border: 1px solid black;
+        margin-left: 15px;
+      }
+      td, th {
+        border: 1px solid black;
+        padding: 8px;
+        max-width: 230px;
+        overflow: hidden;
+      }
+      caption {
+        font-weight: bold;
+        padding: 12px;
+      }
+
+      button {
+        margin-left: 30px;
+        width: 120px;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <caption>Actual books:</caption>
+      <tr>
+        <th>id</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        {% for book in books %}
+      <tr>
+        <td>{{ book.id }}</td>
+        <td><a href="{% url 'book_detail' book.id %}">{{ book.name }} </td>
+        <td>{% for author in book.authors.all %}
+          <a href="{% url 'author_detail' author.id %}">{{author.name}} {{ author.surname }}</a>
+          {% endfor %}</td>
+        <td>{{ book.description }}</td> 
+      </tr>
+        {% endfor %}
+      </tr>
+    </table>
+
+    
+    <table>
+      <caption>Last orders:</caption>
+      <tr>
+        <th>Order id</th>
+        <th>User name</th>
+        <th>User id</th>
+        <th>Book</th>
+        <th>Date</th>
+      </tr>
+      {% for order in orders %}
+      <tr>
+        <td>{{ order.id }}</td>
+        <td><a href="{% url 'user_detail' order.user.id %}">{{ order.user.first_name }}</a></td>
+        <td>{{ order.user.id }}</td>
+        <td>{{ order.book.name }}</td>
+        <td>{{ order.created_at }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
+
+</br></br>
+<a href="{% url 'list_of_orders' %}">
+  <button>Orders</button>
+ </a>
+
+<a href="{% url 'list_of_authors' %}">
+  <button>Authors</button>
+ </a>
+
+<a href="{% url 'book_form' 0 %}">
+<button>Add Book</button>
+</a>
+
+<a href="{% url 'logout' %}">
+  <button>logout</button>
+ </a>
+

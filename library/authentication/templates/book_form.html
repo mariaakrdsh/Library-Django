@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      table {
+        display: inline-table;
+        border: 1px solid black;
+        margin-left: 15px;
+      }
+
+      td, th {
+        border: 1px solid black;
+        padding: 8px;
+        max-width: 800px;
+        overflow: hidden;
+      }
+
+      caption {
+        font-weight: bold;
+        padding: 12px;
+        font-size: 22;
+        font-style: italic;
+        text-align: center;
+      }
+
+      h2, h3 {
+        text-align: center;
+      }
+
+      button {
+        margin-left: 30px;
+        width: 120px;
+        height: 50px;
+      }
+
+      .form-row {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+      }
+
+      .form-row input, .form-row textarea {
+        margin-bottom: 15px;
+      }
+
+      .form-row button {
+        margin-top: 20px;
+      }
+
+    </style>
+  </head>
+<body>
+      <table class="container">
+      <form action="" method="post" autocomplete="off" class="form-row">
+         {% csrf_token %}
+         Name: {{ form.name }}<br>
+         Count: {{ form.count }}<br>
+         Description:<br> {{ form.description }}<br>
+         Year of Publication: {{ form.year_of_publication }}<br>
+         Date of Issue: {{ form.date_of_issue }}<br>
+         <button type="submit">Add book</button>
+             </form>
+         </a>
+         <a href="{% url 'all_books' %}">
+         <button>Back</button>
+         </a>
+
+      </table>
+   </body>
+</html>
+

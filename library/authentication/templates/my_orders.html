@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <style>
+        table {
+          border: 1px solid black;
+          margin-left: 15px;
+        }
+        td, th {
+          border: 1px solid black;
+          padding: 8px;
+        }
+        caption {
+          font-weight: bold;
+          padding: 12px;
+        }
+  
+        button {
+          margin-top: 20px;
+          margin-left: 30px;
+          width: 120px;
+          height: 50px;
+        }
+        
+      </style>
+  </head>
+  <body>
+
+{% if message %}
+<p><h1>{{ message }}</h1></p>
+{% endif %}
+
+<h2>Your orders:</h2>
+<table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Book</th>
+        <th>Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in orders %}
+      <tr>
+        <td>{{ order.id }}</td>
+        <td><a href="{% url 'book_detail' order.book.id %}">{{ order.book.name }}</td>
+        <td>{{ order.created_at }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a href="{% url 'all_books' %}">
+    <button>Main</button>
+    </a>
+
+  </body>

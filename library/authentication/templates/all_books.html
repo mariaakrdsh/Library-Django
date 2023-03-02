@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <style>
+      table {
+        display: inline-table;
+        border: 1px solid black;
+        margin-left: 15px;
+      }
+      td, th {
+        border: 1px solid black;
+        padding: 8px;
+        max-width: 400px;
+        overflow: hidden;
+        /* text-overflow: ellipsis; */
+        /* white-space: nowrap; */
+      }
+      caption {
+        font-weight: bold;
+        padding: 12px;
+      }
+
+      button {
+        margin-left: 30px;
+        width: 120px;
+        height: 50px;
+      }
+      
+    </style>
+  </head>
+  <body>
+
+<table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Description</th>
+        
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in books %}
+      <tr>
+        <td>{{ book.id }}</td>
+        <td><a href="{% url 'book_detail' book.id %}">{{ book.name }}</td>
+        <td>{% for author in book.authors.all %}
+          {{author.name}}
+          {% endfor %}</td>
+        <td>{{ book.description }}</td> 
+        
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+</br></br>
+
+<a href="{% url 'my_orders' %}">
+<button> my orders </button>
+</a>
+
+<a href="{% url 'find_book' %}">
+  <button> find book </button>
+</a>
+
+<a href="{% url 'logout' %}">
+  <button> logout </button>
+</a>

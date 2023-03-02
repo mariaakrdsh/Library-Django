@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <style>
+        table {
+          display: inline-table;
+          border: 1px solid black;
+
+        }
+        td, th {
+          border: 1px solid black;
+          padding: 8px;
+          
+        }
+        caption {
+          font-weight: bold;
+          padding: 12px;
+          font-size: 22;
+          font-style: italic;
+        }
+        h2, h3 {
+            text-align: center;
+        }
+        button {
+          /* margin-left: 8px; */
+          width: 120px;
+          height: 50px;
+          margin-left: 30px;
+        }
+
+        .form-row{
+
+        }
+
+      </style>
+  </head>
+  <body>
+
+  {% block content %}
+  <form action="" method="post" autocomplete="off" class="form-row">
+      {% csrf_token %}
+{#      <!-- {{ form }} -->#}
+      Name: {{ form.name }}<br>
+      Surname: {{ form.surname }}<br>
+      Patronymic: {{ form.patronymic }}<br>
+      Books: {{ form.books }}<br>
+      <button type="submit">Submit</button>
+  </form>
+  {% endblock content %}
+
+{##}
+{#<table>#}
+{#    <caption>{{ author.name }} {{ author.surname }}</caption>#}
+{#    <tr>#}
+{#        <th>Books</th>#}
+{#        <th>Description</th>#}
+{#    <tbody>#}
+{#        {% for book in author.books.all %}#}
+{#    </tr>#}
+{#    <td><a href="{% url 'book_detail' book.id %}">{{book.name}}</a></td>#}
+{#    <td>{{book.description}}</td>#}
+{#    </tr>#}
+{#        {% endfor %}#}
+{#    </table>#}
+
+
+</body>
+</br></br>
+</a>
+<a href="{% url 'all_books' %}">
+<button>Delete author</button>
+</a>
+
+</a>
+<a href="{% url 'all_books' %}">
+<button>Back</button>
+</a>

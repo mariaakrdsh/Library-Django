@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <style>
+      table {
+        border-collapse: collapse;
+        margin: auto;
+        width: 60%;
+      }
+      td, th {
+        border: 2px solid black;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <h1>Welcome!</h1>
+          <h2>Please log in to see book list</h2>
+          </br></br>
+          {% if message %}
+            <p><h2>{{ message }}</h2></p>
+          {% endif %}
+          <form method="post">
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" value="{{ form.email.value }}">
+            <br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" value="{{ form.password.value }}">
+            {% if error %}
+  <p class="error">{{ error }}</p>
+{% endif %}
+            <br><br>
+            <input type="submit" value="Login">
+          </form>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

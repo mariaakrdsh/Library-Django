@@ -1,0 +1,66 @@
+<html>
+   <head>
+      <style>
+       table {
+        display: inline-table;
+        border: 1px solid black;
+        margin-left: 15px;
+      }
+      td, th {
+        border: 1px solid black;
+        padding: 8px;
+        max-width: 800px;
+        overflow: hidden;
+        /* text-overflow: ellipsis; */
+        /* white-space: nowrap; */
+      }
+      caption {
+        font-weight: bold;
+        padding: 12px;
+      }
+
+      button {
+        margin-left: 30px;
+        width: 120px;
+        height: 50px;
+      }
+
+      </style>
+   </head>
+   <body>
+      <table class="container">
+         <caption>All orders: </caption>
+         <tr>
+            <th>Order id</th>
+            <th>User name</th>
+            <th>User id</th>
+            <th>Book</th>
+            <th>Date</th>
+         </tr>
+         {% for order in orders %}
+         <tr>
+            <td>{{ order.id }}</td>
+            <td><a href="{% url 'user_detail' order.user.id %}">{{ order.user.first_name }}</a></td>
+            <td>{{ order.user.id }}</td>
+            <td>{{ order.book.name }}</td>
+            <td>{{ order.created_at }}</td>
+         </tr>
+         {% endfor %}
+         {% if order_form %}
+         <tr>
+            <td colspan="5">
+               <form method="post">
+                  {% csrf_token %}
+                  {{ order_form.as_p }}
+                  <button type="submit">Add Order</button>
+               </form>
+               <a href="{% url 'all_books' %}">
+               <button>Back</button>
+               </a>
+            </td>
+         </tr>
+         {% endif %}
+      </table>
+   </body>
+</html>
+</br>

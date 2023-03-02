@@ -1,0 +1,16 @@
+<h1>You can find the book by its title here</h1>
+
+<form method="get">
+  <input type="text" name="q" placeholder="Search books">
+  <button type="submit">Find Book</button>
+</form>
+
+{% if books %}
+  <ul>
+    {% for book in books %}
+      <li><a href="{% url 'book_detail' book.id %}">{{ book.name }}</a></li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No books found.</p>
+{% endif %}
